@@ -1,0 +1,33 @@
+{
+  "name": "is-typed-array",
+  "version": "1.0.0",
+  "description": "Check if the passed in object is a TypedArray (e.g. Float32Array).",
+  "main": "index.js",
+  "scripts": {
+    "test": "browserify test.js | tap-closer | smokestack | tap-spec"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^10.1.1",
+    "smokestack": "^3.2.2",
+    "tap-closer": "^1.0.0",
+    "tap-spec": "^3.0.0",
+    "tape": "^4.0.0"
+  },
+  "dependencies": {
+    "browserify": "^10.1.1",
+    "smokestack": "^3.2.2",
+    "tap-closer": "^1.0.0",
+    "tap-spec": "^3.0.0",
+    "tape": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderGugel/is-typed-array.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alexanderGugel/is-typed-array/issues"
+  },
+  "homepage": "https://github.com/alexanderGugel/is-typed-array#readme"
+}
