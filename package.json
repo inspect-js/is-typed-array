@@ -40,7 +40,9 @@
 		"Symbol.toStringTag",
 		"@@toStringTag"
 	],
-	"dependencies": {},
+	"dependencies": {
+		"isarray": "^0.0.1"
+	},
 	"devDependencies": {
 		"tape": "^4.2.1",
 		"covert": "^1.1.0",
