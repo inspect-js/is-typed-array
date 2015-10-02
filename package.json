@@ -1,6 +1,6 @@
 {
 	"name": "is-typed-array",
-	"version": "0.0.0",
+	"version": "1.0.1",
 	"author": "Jordan Harband",
 	"description": "Is this value a JS Typed Array? This module works cross-realm/iframe, does not depend on `instanceof` or mutable properties, and despite ES6 Symbol.toStringTag.",
 	"license": "MIT",
