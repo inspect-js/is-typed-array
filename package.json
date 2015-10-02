@@ -53,7 +53,8 @@
 		"make-generator-function": "^1.1.0",
 		"semver": "^5.0.3",
 		"replace": "^0.3.0",
-		"foreach": "^2.0.5"
+		"foreach": "^2.0.5",
+		"is-callable": "^1.1.0"
 	},
 	"testling": {
 		"files": "test.js",
