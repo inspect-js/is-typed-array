@@ -21,7 +21,7 @@ var slice = String.prototype.slice;
 var toStrTags = {};
 var gOPD = Object.getOwnPropertyDescriptor;
 if (hasToStringTag && gOPD && Object.getPrototypeOf) {
-	forEach(Object.keys(typedArrays), function (typedArray) {
+	forEach(typedArrays, function (_, typedArray) {
 		var arr = new global[typedArray]();
 		var proto = Object.getPrototypeOf(arr);
 		toStrTags[typedArray] = gOPD(proto, Symbol.toStringTag).get;
