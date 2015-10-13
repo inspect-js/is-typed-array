@@ -1,3 +1,7 @@
+1.0.4 / 2015-10-13
+=================
+  * [Deps] Add missing `foreach` dependency (#1)
+
 1.0.2 / 2015-10-05
 =================
   * [Deps] Remove unneeded "isarray" dependency
