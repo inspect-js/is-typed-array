@@ -121,6 +121,12 @@
 
 	"disallowMultiLineTernary": true,
 
-	"validateOrderInObjectKeys": "asc-natural"
+	"validateOrderInObjectKeys": "asc-natural",
+
+	"disallowIdenticalDestructuringNames": true,
+
+	"disallowNestedTernaries": { "maxLevel": 1 },
+
+	"requireSpaceAfterComma": true
 }
 
