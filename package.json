@@ -1,11 +1,16 @@
 {
 	"name": "is-typed-array",
 	"version": "1.0.3",
-	"author": "Jordan Harband",
+	"author": {
+		"name": "Jordan Harband",
+		"email": "ljharb@gmail.com",
+		"url": "http://ljharb.codes"
+	},
 	"contributors": [
 		{
 			"name": "Jordan Harband",
-			"email": "ljharb@gmail.com"
+			"email": "ljharb@gmail.com",
+			"url": "http://ljharb.codes"
 		}
 	],
 	"description": "Is this value a JS Typed Array? This module works cross-realm/iframe, does not depend on `instanceof` or mutable properties, and despite ES6 Symbol.toStringTag.",
