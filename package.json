@@ -25,7 +25,7 @@
 		"jscs": "jscs *.js",
 		"eslint": "eslint *.js",
 		"eccheck": "editorconfig-tools check *.js **/*.js > /dev/null",
-		"security": "nsp package"
+		"security": "nsp check"
 	},
 	"repository": {
 		"type": "git",
@@ -55,18 +55,18 @@
 		"foreach": "^2.0.5"
 	},
 	"devDependencies": {
-		"tape": "^4.2.1",
+		"tape": "^4.4.0",
 		"covert": "^1.1.0",
-		"jscs": "^2.3.4",
+		"jscs": "^2.9.0",
 		"editorconfig-tools": "^0.1.1",
-		"nsp": "^1.1.0",
-		"eslint": "^1.7.1",
-		"@ljharb/eslint-config": "^1.4.1",
+		"nsp": "^2.2.0",
+		"eslint": "^2.0.0",
+		"@ljharb/eslint-config": "^2.1.0",
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
-		"semver": "^5.0.3",
+		"semver": "^5.1.0",
 		"replace": "^0.3.0",
-		"is-callable": "^1.1.0"
+		"is-callable": "^1.1.2"
 	},
 	"testling": {
 		"files": "test.js",

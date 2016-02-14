@@ -34,7 +34,7 @@ var tryTypedArrays = function tryTypedArrays(value) {
 		if (!anyTrue) {
 			try {
 				anyTrue = getter.call(value) === typedArray;
-			} catch (e) {/**/}
+			} catch (e) { /**/ }
 		}
 	});
 	return anyTrue;
