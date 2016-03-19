@@ -1,4 +1,11 @@
-1.0.4 / 2015-10-13
+1.0.4 / 2016-03-19
+=================
+  * [Fix] `Symbol.toStringTag` is on the super-`[[Prototype]]` of Float32Array, not the `[[Prototype]]` (#3)
+  * [Tests] up to `node` `v5.9`, `v4.4`
+  * [Tests] use pretest/posttest for linting/security
+  * [Dev Deps] update `tape`, `jscs`, `nsp`, `eslint`, `@ljharb/eslint-config`, `semver`, `is-callable`
+
+1.0.3 / 2015-10-13
 =================
   * [Deps] Add missing `foreach` dependency (#1)
 
