@@ -23,8 +23,16 @@ var gOPD = Object.getOwnPropertyDescriptor;
 if (hasToStringTag && gOPD && Object.getPrototypeOf) {
 	forEach(typedArrays, function (_, typedArray) {
 		var arr = new global[typedArray]();
+		if (!(Symbol.toStringTag in arr)) {
+			throw new EvalError('this engine has support for Symbol.toStringTag, but ' + typedArray + ' does not have the property! Please report this.');
+		}
 		var proto = Object.getPrototypeOf(arr);
-		toStrTags[typedArray] = gOPD(proto, Symbol.toStringTag).get;
+		var descriptor = gOPD(proto, Symbol.toStringTag);
+		if (!descriptor) {
+			var superProto = Object.getPrototypeOf(proto);
+			descriptor = gOPD(superProto, Symbol.toStringTag);
+		}
+		toStrTags[typedArray] = descriptor.get;
 	});
 }
 
