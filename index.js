@@ -1,38 +1,40 @@
 'use strict';
 
 /** Russian, for me | Русский, для меня
-		Use the 'Array.forEach' expensive, not break by the execution
-		and 'Array.every' raises the compiler version, easier to write cycle.
-			Использовать 'Array.forEach' дорого, не обрывает выполнение,
-			а 'Array.every' поднимает версию компилятора, проще написать цикл.
-*/
+	My English is bad. What do we do?
+		У меня плохой Английский. Что мы делаем?
 
-var typedArrays = { Float32Array: true, Float64Array: true, Int8Array: true, Int16Array: true, Int32Array: true, Uint8Array: true, Uint8ClampedArray: true, Uint16Array: true, Uint32Array: true };
+	1) In the cycle by a list of names TypedArray, get an object.
+		В цикле по списку имён TypedArra, получаем объект.
+
+	2) From the descriptor object take the function returns the name of type the object.
+		Из дескриптора объекта берем функцию возвращающую имя типа объекта.
+
+	3) Check the object type name with the type names of the values in the same list.
+		Проверяем имя типа объекта значения с именами в том же списке.
+
+	Cycles use expensive
+		Циклы использовать дорого
+
+	Two queries to a single object in the function.
+		Два запроса к одному объекту в функции.
+
+	Simply perform step two and three for the value.
+		Проще выполнить пункт два и три для значения.
+*/
+// For strings cheaper functions for strings
+// 	Для строк дешевле функции для строк
+var typedArrays = /[Float[32|64]|Uint8Clamped|[Int|Uint][8|16|32]]Array/;
 
 module.exports = Object.getPrototypeOf && Object.getOwnPropertyDescriptor && typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol' ? function (value) {
-	/* eslint no-redeclare: 1 */
-	var value = Object(value);
-	var proto, descriptor, arr, typedArray;
-	/* eslint no-restricted-syntax: 1 */
-	/* jscs:disable disallowNodeTypes */
-	for (typedArray in typedArrays) {
-		if (Object.prototype.hasOwnProperty.call(typedArrays, typedArray)) {
-			arr = new global[typedArray]();
-			if (!(Symbol.toStringTag in arr)) {
-				throw new EvalError('this engine has support for Symbol.toStringTag, but ' + typedArray + ' does not have the property! Please report this.');
-			}
-			if ((
-		descriptor = Object.getOwnPropertyDescriptor(
-		(proto = Object.getPrototypeOf(arr), Object.getPrototypeOf(proto) || proto),
-		Symbol.toStringTag)
-		) && typedArrays[descriptor.get.call(value)]) { return true; }
-		}
-	}
-	/* jscs:enable disallowNodeTypes
-	*/
-	return false;
+	var proto, descriptor;
+	/* eslint no-return-assign: 1 */
+	return !!(Object(value) === value && (
+		(descriptor = Object.getOwnPropertyDescriptor(
+			(proto = Object.getPrototypeOf(value), Object.getPrototypeOf(proto) || proto),
+			Symbol.toStringTag)
+		) && typedArrays.test(descriptor.get.call(value))
+	));
 } : function (value) {
-	/* eslint no-redeclare: 1 */
-	var value = Object(value);
-	return !!typedArrays[String.prototype.slice.call(Object.prototype.toString.call(value), 8, -1)];
+	return !!(Object(value) === value && typedArrays.test({}.toString.call(value)));
 };
