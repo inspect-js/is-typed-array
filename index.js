@@ -1,17 +1,6 @@
 'use strict';
 
-var typedArrays = function (value) {
-	/* eslint no-return-assign: 1 */
-	var reg = /.*((Float|Uint|Int)(8Clamped|8|16|32|64))Array.*/;
-	return reg.test(value);
-/**
-	// If use 'return (reg = value.replace(reg, "$1")) !== value && reg;'
-	// function will return the name of the data stored in the array, it is true
-	// or false.
-	//	Если использовать 'return (reg = value.replace(reg, "$1")) !== value && reg;'
-	//	функция будет возвращать имя хранимых данных в массиве, это true или false.
-*/
-};
+var typedArrays = /.*((Float|Uint|Int)(8Clamped|8|16|32|64))Array.*/;
 
 module.exports = Object.getPrototypeOf && Object.getOwnPropertyDescriptor && typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol' ? function (value) {
 	var proto, descriptor;
@@ -20,8 +9,11 @@ module.exports = Object.getPrototypeOf && Object.getOwnPropertyDescriptor && typ
 		(descriptor = Object.getOwnPropertyDescriptor(
 			(proto = Object.getPrototypeOf(value), Object.getPrototypeOf(proto) || proto),
 			Symbol.toStringTag)
-		) && typedArrays(descriptor.get.call(value))
-	);
+		) && (
+		descriptor = descriptor.get.call(value),
+		proto = descriptor.replace(typedArrays, '$1')) !== descriptor && proto);
 } : function (value) {
-	return typedArrays({}.toString.call(value));
+	var out;
+	var val = String.prototype.toString.call(value);
+	return (out = val.replace(typedArrays, '$1')) !== val && out;
 };
