@@ -5,7 +5,7 @@
 
 	"rules": {
 		"max-statements-per-line": [2, { "max": 2 }],
-		"max-statements": ["error", 16],
+		"max-statements": ["error", 17],
 		"no-restricted-syntax": ["warn", "ForInStatement"]
 	}
 }

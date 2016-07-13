@@ -1,6 +1,3 @@
-.gitignore
-GIT_*.cmd
-
 # Logs
 logs
 *.log
