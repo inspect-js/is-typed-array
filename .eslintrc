@@ -4,6 +4,7 @@
 	"extends": "@ljharb",
 
 	"rules": {
-		"max-statements-per-line": [2, { "max": 2 }]
+		"max-statements-per-line": [2, { "max": 2 }],
+		"no-restricted-syntax": [1, "ForInStatement"]
 	}
 }

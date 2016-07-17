@@ -1,6 +1,6 @@
 'use strict';
 
-var forEach = require('foreach');
+var has = require('has');
 
 var toStr = Object.prototype.toString;
 var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
@@ -20,32 +20,36 @@ var typedArrays = {
 var slice = String.prototype.slice;
 var toStrTags = {};
 var gOPD = Object.getOwnPropertyDescriptor;
+var typedArray;
 if (hasToStringTag && gOPD && Object.getPrototypeOf) {
-	forEach(typedArrays, function (_, typedArray) {
-		var arr = new global[typedArray]();
-		if (!(Symbol.toStringTag in arr)) {
-			throw new EvalError('this engine has support for Symbol.toStringTag, but ' + typedArray + ' does not have the property! Please report this.');
+	/* jscs:disable disallowNodeTypes */
+	for (typedArray in typedArrays) {
+		if (has(typedArrays, typedArray)) {
+			var arr = new global[typedArray]();
+			if (!(Symbol.toStringTag in arr)) {
+				throw new EvalError('this engine has support for Symbol.toStringTag, but ' + typedArray + ' does not have the property! Please report this.');
+			}
+			var proto = Object.getPrototypeOf(arr);
+			var descriptor = gOPD(proto, Symbol.toStringTag);
+			if (!descriptor) {
+				var superProto = Object.getPrototypeOf(proto);
+				descriptor = gOPD(superProto, Symbol.toStringTag);
+			}
+			if (descriptor.get) { toStrTags[typedArray] = descriptor.get; }
 		}
-		var proto = Object.getPrototypeOf(arr);
-		var descriptor = gOPD(proto, Symbol.toStringTag);
-		if (!descriptor) {
-			var superProto = Object.getPrototypeOf(proto);
-			descriptor = gOPD(superProto, Symbol.toStringTag);
-		}
-		toStrTags[typedArray] = descriptor.get;
-	});
+	}
+	/* jscs:enable disallowNodeTypes */
 }
 
 var tryTypedArrays = function tryTypedArrays(value) {
-	var anyTrue = false;
-	forEach(toStrTags, function (getter, typedArray) {
-		if (!anyTrue) {
-			try {
-				anyTrue = getter.call(value) === typedArray;
-			} catch (e) { /**/ }
+	/* jscs:disable disallowNodeTypes */
+	for (typedArray in toStrTags) {
+		if (has(toStrTags, typedArray)) {
+			if (toStrTags[typedArray].call(value) === typedArray) { return true; }
 		}
-	});
-	return anyTrue;
+	}
+	/* jscs:enable disallowNodeTypes */
+	return false;
 };
 
 module.exports = function isTypedArray(value) {
