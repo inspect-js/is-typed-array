@@ -1,5 +1,7 @@
 'use strict';
 
+var has = require('has');
+
 var toStr = Object.prototype.toString;
 var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
 
@@ -16,25 +18,40 @@ var typedArrays = {
 };
 
 var slice = String.prototype.slice;
+var toStrTags = {};
 var gOPD = Object.getOwnPropertyDescriptor;
-var tryTypedArrays = function isTypedArray(value) {
-	var typedArray;
-	if (Object.getPrototypeOf) {
-		if (Symbol.toStringTag in value) {
-			//
-			//
-			var proto = Object.getPrototypeOf(value);
+var typedArray;
+if (hasToStringTag && gOPD && Object.getPrototypeOf) {
+	/* jscs:disable disallowNodeTypes */
+	for (typedArray in typedArrays) {
+		if (has(typedArrays, typedArray)) {
+			var arr = new global[typedArray]();
+			if (!(Symbol.toStringTag in arr)) {
+				throw new EvalError('this engine has support for Symbol.toStringTag, but ' + typedArray + ' does not have the property! Please report this.');
+			}
+			var proto = Object.getPrototypeOf(arr);
 			var descriptor = gOPD(proto, Symbol.toStringTag);
 			if (!descriptor) {
 				var superProto = Object.getPrototypeOf(proto);
 				descriptor = gOPD(superProto, Symbol.toStringTag);
 			}
-			if (descriptor && descriptor.get) {
-				typedArray = descriptor.get.call(value);
-			}
+			if (descriptor.get) { toStrTags[typedArray] = descriptor.get; }
 		}
 	}
-	return !!typedArrays[typedArray];
+	/* jscs:enable disallowNodeTypes */
+}
+
+var tryTypedArrays = function tryTypedArrays(value) {
+	var anyTrue = false;
+	/* jscs:disable disallowNodeTypes */
+	for (typedArray in toStrTags) {
+		if (has(toStrTags, typedArray)) {
+			anyTrue = toStrTags[typedArray].call(value);
+			if (anyTrue === typedArray) { return true; }
+		}
+	}
+	/* jscs:enable disallowNodeTypes */
+	return anyTrue;
 };
 
 module.exports = function isTypedArray(value) {
