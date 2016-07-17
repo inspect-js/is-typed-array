@@ -42,16 +42,14 @@ if (hasToStringTag && gOPD && Object.getPrototypeOf) {
 }
 
 var tryTypedArrays = function tryTypedArrays(value) {
-	var anyTrue = false;
 	/* jscs:disable disallowNodeTypes */
 	for (typedArray in toStrTags) {
 		if (has(toStrTags, typedArray)) {
-			anyTrue = toStrTags[typedArray].call(value);
-			if (anyTrue === typedArray) { return true; }
+			if (toStrTags[typedArray].call(value) === typedArray) { return true; }
 		}
 	}
 	/* jscs:enable disallowNodeTypes */
-	return anyTrue;
+	return false;
 };
 
 module.exports = function isTypedArray(value) {
