@@ -36,7 +36,7 @@ if (hasToStringTag && gOPD && Object.getPrototypeOf) {
 	});
 }
 
-var tryTypedArrays = function tryTypedArrays(value) {
+var tryTypedArrays = function tryAllTypedArrays(value) {
 	var anyTrue = false;
 	forEach(toStrTags, function (getter, typedArray) {
 		if (!anyTrue) {
