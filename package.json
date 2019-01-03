@@ -56,15 +56,15 @@
 		"foreach": "^2.0.5"
 	},
 	"devDependencies": {
-		"@ljharb/eslint-config": "^13.0.0",
-		"covert": "^1.1.0",
-		"eslint": "^5.3.0",
+		"@ljharb/eslint-config": "^13.1.1",
+		"covert": "^1.1.1",
+		"eslint": "^5.11.1",
 		"is-callable": "^1.1.4",
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
-		"replace": "^1.0.0",
-		"semver": "^5.5.0",
-		"tape": "^4.9.1"
+		"replace": "^1.0.1",
+		"semver": "^5.6.0",
+		"tape": "^4.9.2"
 	},
 	"testling": {
 		"files": "test.js",
