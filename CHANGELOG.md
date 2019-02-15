@@ -1,3 +1,14 @@
+1.1.0 / 2019-02-16
+=================
+  * [New] add `BigInt64Array` and `BigUint64Array`
+  * [Refactor] use an array instead of an object for storing Typed Array names
+  * [meta] ignore `test.html`
+  * [Tests] up to `node` `v11.10`, `v10.15`, `v8.15`, `v7.10`, `v6.16`, `v5.10`, `v4.9`
+  * [Tests] remove `jscs`
+  * [Tests] use `npm audit` instead of `nsp`
+  * [Dev Deps] update `eslint`,` @ljharb/eslint-config`, `is-callable`, `tape`, `replace`, `semver`
+  * [Dev Deps] remove unused eccheck script + dep
+
 1.0.4 / 2016-03-19
 =================
   * [Fix] `Symbol.toStringTag` is on the super-`[[Prototype]]` of Float32Array, not the `[[Prototype]]` (#3)
