@@ -17,7 +17,9 @@ var typedArrayNames = [
 	'Int32Array',
 	'Uint32Array',
 	'Float32Array',
-	'Float64Array'
+	'Float64Array',
+	'BigInt64Array',
+	'BigUint64Array'
 ];
 
 test('not arrays', function (t) {
@@ -67,11 +69,14 @@ test('Arrow functions', { skip: !arrowFn }, function (t) {
 });
 
 test('@@toStringTag', { skip: !hasSymbols || !Symbol.toStringTag }, function (t) {
-	t.plan(typedArrayNames.length);
 	forEach(typedArrayNames, function (typedArray) {
-		var fakeTypedArray = [];
-		fakeTypedArray[Symbol.toStringTag] = typedArray;
-		t.notOk(isTypedArray(fakeTypedArray), 'faked ' + typedArray + ' is not typed array');
+		if (typeof global[typedArray] === 'function') {
+			var fakeTypedArray = [];
+			fakeTypedArray[Symbol.toStringTag] = typedArray;
+			t.notOk(isTypedArray(fakeTypedArray), 'faked ' + typedArray + ' is not typed array');
+		} else {
+			t.comment('# SKIP ' + typedArray + ' is not supported');
+		}
 	});
 	t.end();
 });
@@ -83,7 +88,7 @@ test('Typed Arrays', function (t) {
 			var arr = new TypedArray(10);
 			t.ok(isTypedArray(arr), 'new ' + typedArray + '(10) is typed array');
 		} else {
-			t.comment(typedArray + ' is not supported');
+			t.comment('# SKIP ' + typedArray + ' is not supported');
 		}
 	});
 	t.end();
