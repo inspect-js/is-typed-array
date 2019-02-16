@@ -54,7 +54,7 @@ var tryTypedArrays = function tryAllTypedArrays(value) {
 
 module.exports = function isTypedArray(value) {
 	if (!value || typeof value !== 'object') { return false; }
-	if (!hasToStringTag) { return !!typedArrays[slice.call(toStr.call(value), 8, -1)]; }
+	if (!hasToStringTag) { return typedArrays.indexOf(slice.call(toStr.call(value), 8, -1)) > -1; }
 	if (!gOPD) { return false; }
 	return tryTypedArrays(value);
 };
