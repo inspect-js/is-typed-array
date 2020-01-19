@@ -1,3 +1,13 @@
+1.1.1 / 2020-01-18
+=================
+  * [Robustness] don’t rely on Array.prototype.indexOf existing
+  * [meta] remove unused Makefile and associated utilities
+  * [meta] add `funding` field; create FUNDING.yml
+  * [actions] add automatic rebasing / merge commit blocking
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `is-callable`, `replace`, `semver`, `tape`; add `safe-publish-latest`
+  * [Tests] use shared travis-ci configs
+  * [Tests] use `npx aud` instead of `nsp` or `npm audit` with hoops
+
 1.1.0 / 2019-02-16
 =================
   * [New] add `BigInt64Array` and `BigUint64Array`
