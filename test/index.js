@@ -82,6 +82,11 @@ test('@@toStringTag', { skip: !hasSymbols || !Symbol.toStringTag }, function (t)
 	t.end();
 });
 
+test('non-Typed Arrays', function (t) {
+	t.notOk(isTypedArray([]), '[] is not typed array');
+	t.end();
+});
+
 test('Typed Arrays', function (t) {
 	forEach(typedArrayNames, function (typedArray) {
 		var TypedArray = global[typedArray];

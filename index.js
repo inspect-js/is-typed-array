@@ -19,8 +19,16 @@ var typedArrays = [
 	'BigUint64Array'
 ];
 
+var $indexOf = Array.prototype.indexOf || function indexOf(value) {
+	/* eslint no-invalid-this: 0 */
+	for (var i = 0; i < this.length; i += 1) {
+		if (this[i] === value) {
+			return i;
+		}
+	}
+	return -1;
+};
 var $slice = String.prototype.slice;
-var $indexOf = String.prototype.indexOf;
 var toStrTags = {};
 var gOPD = Object.getOwnPropertyDescriptor;
 if (hasToStringTag && gOPD && Object.getPrototypeOf) {
@@ -55,7 +63,10 @@ var tryTypedArrays = function tryAllTypedArrays(value) {
 
 module.exports = function isTypedArray(value) {
 	if (!value || typeof value !== 'object') { return false; }
-	if (!hasToStringTag) { return $indexOf.call(typedArrays, $slice.call(toStr.call(value), 8, -1)) > -1; }
+	if (!hasToStringTag) {
+		var tag = $slice.call(toStr.call(value), 8, -1);
+		return $indexOf.call(typedArrays, tag) > -1;
+	}
 	if (!gOPD) { return false; }
 	return tryTypedArrays(value);
 };
