@@ -1,3 +1,8 @@
+1.1.2 / 2020-01-20
+=================
+  * [Fix] in envs without Symbol.toStringTag, dc8a8cc made arrays return `true`
+  * [Tests] add `evalmd` to `prelint`
+
 1.1.1 / 2020-01-18
 =================
   * [Robustness] don’t rely on Array.prototype.indexOf existing
