@@ -18,25 +18,25 @@ Is this value a JS Typed Array? This module works cross-realm/iframe, does not d
 var isTypedArray = require('is-typed-array');
 var assert = require('assert');
 
-assert.notOk(isTypedArray(undefined));
-assert.notOk(isTypedArray(null));
-assert.notOk(isTypedArray(false));
-assert.notOk(isTypedArray(true));
-assert.notOk(isTypedArray([]));
-assert.notOk(isTypedArray({}));
-assert.notOk(isTypedArray(/a/g));
-assert.notOk(isTypedArray(new RegExp('a', 'g')));
-assert.notOk(isTypedArray(new Date()));
-assert.notOk(isTypedArray(42));
-assert.notOk(isTypedArray(NaN));
-assert.notOk(isTypedArray(Infinity));
-assert.notOk(isTypedArray(new Number(42)));
-assert.notOk(isTypedArray('foo'));
-assert.notOk(isTypedArray(Object('foo')));
-assert.notOk(isTypedArray(function () {}));
-assert.notOk(isTypedArray(function* () {}));
-assert.notOk(isTypedArray(x => x * x));
-assert.notOk(isTypedArray([]));
+assert.equal(false, isTypedArray(undefined));
+assert.equal(false, isTypedArray(null));
+assert.equal(false, isTypedArray(false));
+assert.equal(false, isTypedArray(true));
+assert.equal(false, isTypedArray([]));
+assert.equal(false, isTypedArray({}));
+assert.equal(false, isTypedArray(/a/g));
+assert.equal(false, isTypedArray(new RegExp('a', 'g')));
+assert.equal(false, isTypedArray(new Date()));
+assert.equal(false, isTypedArray(42));
+assert.equal(false, isTypedArray(NaN));
+assert.equal(false, isTypedArray(Infinity));
+assert.equal(false, isTypedArray(new Number(42)));
+assert.equal(false, isTypedArray('foo'));
+assert.equal(false, isTypedArray(Object('foo')));
+assert.equal(false, isTypedArray(function () {}));
+assert.equal(false, isTypedArray(function* () {}));
+assert.equal(false, isTypedArray(x => x * x));
+assert.equal(false, isTypedArray([]));
 
 assert.ok(isTypedArray(new Int8Array()));
 assert.ok(isTypedArray(new Uint8Array()));
@@ -47,6 +47,8 @@ assert.ok(isTypedArray(new Int32Array()));
 assert.ok(isTypedArray(new Uint32Array()));
 assert.ok(isTypedArray(new Float32Array()));
 assert.ok(isTypedArray(new Float64Array()));
+assert.ok(isTypedArray(new BigInt64Array()));
+assert.ok(isTypedArray(new BigUint64Array()));
 ```
 
 ## Tests

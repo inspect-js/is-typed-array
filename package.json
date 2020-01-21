@@ -26,6 +26,7 @@
 		"tests-only": "node --es-staging test",
 		"posttest": "npx aud",
 		"coverage": "covert test/index.js",
+		"prelint": "evalmd README.md",
 		"lint": "eslint ."
 	},
 	"repository": {
@@ -59,6 +60,7 @@
 		"@ljharb/eslint-config": "^15.1.0",
 		"covert": "^1.1.1",
 		"eslint": "^6.8.0",
+		"evalmd": "^0.0.19",
 		"is-callable": "^1.1.5",
 		"make-arrow-function": "^1.1.0",
 		"make-generator-function": "^1.1.0",
