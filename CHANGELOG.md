@@ -1,3 +1,7 @@
+1.1.3 / 2020-01-24
+=================
+  * [Refactor] use `es-abstract`’s `callBound`, `available-typed-arrays`, `has-symbols`
+
 1.1.2 / 2020-01-20
 =================
   * [Fix] in envs without Symbol.toStringTag, dc8a8cc made arrays return `true`
