@@ -54,7 +54,10 @@
 		"@@toStringTag"
 	],
 	"dependencies": {
-		"foreach": "^2.0.5"
+		"available-typed-arrays": "^1.0.0",
+		"es-abstract": "^1.17.4",
+		"foreach": "^2.0.5",
+		"has-symbols": "^1.0.1"
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^15.1.0",
