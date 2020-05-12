@@ -60,16 +60,17 @@
 		"has-symbols": "^1.0.1"
 	},
 	"devDependencies": {
-		"@ljharb/eslint-config": "^16.0.0",
+		"@ljharb/eslint-config": "^17.0.0",
+		"aud": "^1.1.1",
 		"covert": "^1.1.1",
-		"eslint": "^6.8.0",
+		"eslint": "^7.0.0",
 		"evalmd": "^0.0.19",
 		"is-callable": "^1.1.5",
 		"make-arrow-function": "^1.2.0",
 		"make-generator-function": "^2.0.0",
 		"object-inspect": "^1.7.0",
 		"safe-publish-latest": "^1.1.4",
-		"tape": "^5.0.0-next.4"
+		"tape": "^5.0.0"
 	},
 	"testling": {
 		"files": "test/index.js",
