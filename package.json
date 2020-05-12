@@ -24,7 +24,7 @@
 		"pretest": "npm run --silent lint",
 		"test": "npm run tests-only",
 		"tests-only": "node --es-staging test",
-		"posttest": "npx aud",
+		"posttest": "npx aud --production",
 		"coverage": "covert test/index.js",
 		"prelint": "evalmd README.md",
 		"lint": "eslint ."
