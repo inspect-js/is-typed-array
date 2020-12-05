@@ -22,10 +22,10 @@
 	"scripts": {
 		"prepublish": "safe-publish-latest",
 		"pretest": "npm run --silent lint",
-		"test": "npm run tests-only",
-		"tests-only": "node --es-staging test",
+		"test": "npm run tests-only && npm run test:harmony",
+		"tests-only": "nyc tape test",
+		"test:harmony": "nyc node --harmony --es-staging test",
 		"posttest": "npx aud --production",
-		"coverage": "covert test/index.js",
 		"prelint": "evalmd README.md",
 		"lint": "eslint ."
 	},
@@ -62,12 +62,12 @@
 	"devDependencies": {
 		"@ljharb/eslint-config": "^17.0.0",
 		"aud": "^1.1.1",
-		"covert": "^1.1.1",
 		"eslint": "^7.0.0",
 		"evalmd": "^0.0.19",
 		"is-callable": "^1.1.5",
 		"make-arrow-function": "^1.2.0",
 		"make-generator-function": "^2.0.0",
+		"nyc": "^10.3.2",
 		"object-inspect": "^1.7.0",
 		"safe-publish-latest": "^1.1.4",
 		"tape": "^5.0.0"
