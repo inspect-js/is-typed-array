@@ -1,3 +1,15 @@
+1.1.4 / 2020-12-05
+=================
+  * [readme] fix repo URLs, remove defunct badges
+  * [Deps] update `available-typed-arrays`, `es-abstract`; use `call-bind` where applicable
+  * [meta] gitignore nyc output
+  * [meta] only audit prod deps
+  * [actions] add "Allow Edits" workflow
+  * [actions] switch Automatic Rebase workflow to `pull_request_target` event
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `is-callable`, `make-arrow-function`, `make-generator-function`, `object-inspect`, `tape`; add `aud`
+  * [Tests] migrate tests to Github Actions
+  * [Tests] run `nyc` on all tests
+
 1.1.3 / 2020-01-24
 =================
   * [Refactor] use `es-abstract`’s `callBound`, `available-typed-arrays`, `has-symbols`
