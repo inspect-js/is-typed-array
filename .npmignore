@@ -12,6 +12,18 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+.nyc_output/
+.nycrc
+
+# GitHub actions
+.github/
+
+# eslint configuration
+.eslintignore
+.eslintrc
+
+# tests
+test/
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
