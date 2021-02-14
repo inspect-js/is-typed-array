@@ -12,6 +12,7 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+.nyc_output/
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
@@ -32,3 +33,6 @@ package-lock.json
 yarn.lock
 
 test.html
+
+.github/workflows
+
