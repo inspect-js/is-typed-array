@@ -57,9 +57,9 @@
 	"dependencies": {
 		"available-typed-arrays": "^1.0.2",
 		"call-bind": "^1.0.2",
-		"es-abstract": "^1.18.0-next.2",
+		"es-abstract": "^1.18.0",
 		"foreach": "^2.0.5",
-		"has-symbols": "^1.0.1"
+		"has-symbols": "^1.0.2"
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^17.6.0",
