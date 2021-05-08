@@ -1,5 +1,7 @@
 # is-typed-array <sup>[![Version Badge][2]][1]</sup>
 
+[![github actions][actions-image]][actions-url]
+[![coverage][codecov-image]][codecov-url]
 [![dependency status][5]][6]
 [![dev dependency status][7]][8]
 [![License][license-image]][license-url]
@@ -52,13 +54,17 @@ assert.ok(isTypedArray(new BigUint64Array()));
 Simply clone the repo, `npm install`, and run `npm test`
 
 [1]: https://npmjs.org/package/is-typed-array
-[2]: http://versionbadg.es/inspect-js/is-typed-array.svg
+[2]: https://versionbadg.es/inspect-js/is-typed-array.svg
 [5]: https://david-dm.org/inspect-js/is-typed-array.svg
 [6]: https://david-dm.org/inspect-js/is-typed-array
 [7]: https://david-dm.org/inspect-js/is-typed-array/dev-status.svg
 [8]: https://david-dm.org/inspect-js/is-typed-array#info=devDependencies
 [11]: https://nodei.co/npm/is-typed-array.png?downloads=true&stars=true
-[license-image]: http://img.shields.io/npm/l/is-typed-array.svg
+[license-image]: https://img.shields.io/npm/l/is-typed-array.svg
 [license-url]: LICENSE
-[downloads-image]: http://img.shields.io/npm/dm/is-typed-array.svg
-[downloads-url]: http://npm-stat.com/charts.html?package=is-typed-array
+[downloads-image]: https://img.shields.io/npm/dm/is-typed-array.svg
+[downloads-url]: https://npm-stat.com/charts.html?package=is-typed-array
+[codecov-image]: https://codecov.io/gh/inspect-js/is-typed-array/branch/main/graphs/badge.svg
+[codecov-url]: https://app.codecov.io/gh/inspect-js/is-typed-array/
+[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/inspect-js/is-typed-array
+[actions-url]: https://github.com/inspect-js/is-typed-array/actions
