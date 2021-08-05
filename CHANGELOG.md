@@ -1,3 +1,12 @@
+1.1.6 / 2021-08-05
+=================
+  * [Fix] use `has-tostringtag` to behave correctly in the presence of symbol shams
+  * [readme] add actions and codecov badges
+  * [meta] use `prepublishOnly` script for npm 7+
+  * [Deps] update `available-typed-arrays`, `es-abstract`
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `object-inspect`, `tape`
+  * [actions] use `node/install` instead of `node/run`; use `codecov` action
+
 1.1.5 / 2021-02-14
 =================
   * [meta] do not publish github action workflow files or nyc output
