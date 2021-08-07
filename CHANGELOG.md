@@ -1,3 +1,8 @@
+1.1.7 / 2021-08-07
+=================
+  * [Fix] if Symbol.toStringTag exists but is not present, use Object.prototype.toString
+  * [Dev Deps] update `is-callable`, `tape`
+
 1.1.6 / 2021-08-05
 =================
   * [Fix] use `has-tostringtag` to behave correctly in the presence of symbol shams
