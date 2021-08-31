@@ -55,7 +55,7 @@
 		"@@toStringTag"
 	],
 	"dependencies": {
-		"available-typed-arrays": "^1.0.4",
+		"available-typed-arrays": "^1.0.5",
 		"call-bind": "^1.0.2",
 		"es-abstract": "^1.18.5",
 		"foreach": "^2.0.5",
