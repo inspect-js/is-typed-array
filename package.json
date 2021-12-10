@@ -28,7 +28,7 @@
 		"test:harmony": "nyc node --harmony --es-staging test",
 		"posttest": "npx aud --production",
 		"prelint": "evalmd README.md",
-		"lint": "eslint ."
+		"lint": "eslint --ext=js,mjs ."
 	},
 	"repository": {
 		"type": "git",
@@ -62,17 +62,17 @@
 		"has-tostringtag": "^1.0.0"
 	},
 	"devDependencies": {
-		"@ljharb/eslint-config": "^18.0.0",
+		"@ljharb/eslint-config": "^20.0.0",
 		"aud": "^1.1.5",
-		"eslint": "^7.32.0",
+		"eslint": "^8.4.1",
 		"evalmd": "^0.0.19",
 		"is-callable": "^1.2.4",
 		"make-arrow-function": "^1.2.0",
 		"make-generator-function": "^2.0.0",
 		"nyc": "^10.3.2",
-		"object-inspect": "^1.11.0",
-		"safe-publish-latest": "^1.1.4",
-		"tape": "^5.3.1"
+		"object-inspect": "^1.11.1",
+		"safe-publish-latest": "^2.0.0",
+		"tape": "^5.3.2"
 	},
 	"testling": {
 		"files": "test/index.js",
