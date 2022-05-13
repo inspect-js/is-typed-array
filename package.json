@@ -57,7 +57,7 @@
 	"dependencies": {
 		"available-typed-arrays": "^1.0.5",
 		"call-bind": "^1.0.2",
-		"es-abstract": "^1.19.1",
+		"es-abstract": "^1.20.0",
 		"for-each": "^0.3.3",
 		"has-tostringtag": "^1.0.0"
 	},
