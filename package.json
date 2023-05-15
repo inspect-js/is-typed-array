@@ -59,7 +59,6 @@
 	],
 	"dependencies": {
 		"available-typed-arrays": "^1.0.5",
-		"call-bind": "^1.0.2",
 		"gopd": "^1.0.1",
 		"has-tostringtag": "^1.0.0"
 	},
