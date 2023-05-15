@@ -1,6 +1,5 @@
 'use strict';
 
-var forEach = require('for-each');
 var availableTypedArrays = require('available-typed-arrays');
 var callBound = require('call-bind/callBound');
 
@@ -23,7 +22,7 @@ var $slice = callBound('String.prototype.slice');
 var toStrTags = {};
 var getPrototypeOf = Object.getPrototypeOf; // require('getprototypeof');
 if (hasToStringTag && gOPD && getPrototypeOf) {
-	forEach(typedArrays, function (typedArray) {
+	Array.prototype.forEach.call(typedArrays, function (typedArray) {
 		var arr = new g[typedArray]();
 		if (Symbol.toStringTag in arr) {
 			var proto = getPrototypeOf(arr);
@@ -38,15 +37,18 @@ if (hasToStringTag && gOPD && getPrototypeOf) {
 }
 
 var tryTypedArrays = function tryAllTypedArrays(value) {
-	var anyTrue = false;
-	forEach(toStrTags, function (getter, typedArray) {
-		if (!anyTrue) {
-			try {
-				anyTrue = getter.call(value) === typedArray;
-			} catch (e) { /**/ }
-		}
-	});
-	return anyTrue;
+	// note: can update syntax to friendlier for..of when dropping support for node 0.10
+	var keys = Object.keys(toStrTags);
+	for (var i = 0; i < keys.length; i++) {
+		var typedArray = keys[i];
+		var getter = toStrTags[typedArray];
+		try {
+			if (getter.call(value) === typedArray) {
+				return true;
+			}
+		} catch (e) { /**/ }
+	}
+	return false;
 };
 
 module.exports = function isTypedArray(value) {
