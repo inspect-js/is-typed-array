@@ -20,7 +20,7 @@ var $indexOf = callBound('Array.prototype.indexOf', true) || function indexOf(ar
 	return -1;
 };
 var $slice = callBound('String.prototype.slice');
-var toStrTags = {};
+var cache = { __proto__: null };
 var getPrototypeOf = Object.getPrototypeOf; // require('getprototypeof');
 if (hasToStringTag && gOPD && getPrototypeOf) {
 	forEach(typedArrays, function (typedArray) {
@@ -32,17 +32,35 @@ if (hasToStringTag && gOPD && getPrototypeOf) {
 				var superProto = getPrototypeOf(proto);
 				descriptor = gOPD(superProto, Symbol.toStringTag);
 			}
-			toStrTags[typedArray] = descriptor.get;
+			cache['$' + typedArray] = descriptor.get;
 		}
+	});
+} else {
+	forEach(typedArrays, function (typedArray) {
+		var arr = new g[typedArray]();
+		cache['$' + typedArray] = arr.slice;
 	});
 }
 
 var tryTypedArrays = function tryAllTypedArrays(value) {
 	var anyTrue = false;
-	forEach(toStrTags, function (getter, typedArray) {
+	forEach(cache, function (getter, typedArray) {
 		if (!anyTrue) {
 			try {
-				anyTrue = getter.call(value) === typedArray;
+				anyTrue = ('$' + getter.call(value)) === typedArray;
+			} catch (e) { /**/ }
+		}
+	});
+	return anyTrue;
+};
+
+var trySlices = function tryAllSlices(value) {
+	var anyTrue = false;
+	forEach(cache, function (getter) {
+		if (!anyTrue) {
+			try {
+				getter.call(value);
+				anyTrue = true;
 			} catch (e) { /**/ }
 		}
 	});
@@ -51,10 +69,17 @@ var tryTypedArrays = function tryAllTypedArrays(value) {
 
 module.exports = function isTypedArray(value) {
 	if (!value || typeof value !== 'object') { return false; }
-	if (!hasToStringTag || !(Symbol.toStringTag in value)) {
+	if (!hasToStringTag) {
 		var tag = $slice($toString(value), 8, -1);
-		return $indexOf(typedArrays, tag) > -1;
+		if ($indexOf(typedArrays, tag) > -1) {
+			return true;
+		}
+		if (tag !== 'Object') {
+			return false;
+		}
+		// node < 0.6 hits here on real Typed Arrays
+		return trySlices(value);
 	}
-	if (!gOPD) { return false; }
+	if (!gOPD) { return null; } // unknown engine
 	return tryTypedArrays(value);
 };
