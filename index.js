@@ -2,6 +2,7 @@
 
 var forEach = require('for-each');
 var availableTypedArrays = require('available-typed-arrays');
+var callBind = require('call-bind');
 var callBound = require('call-bind/callBound');
 
 var $toString = callBound('Object.prototype.toString');
@@ -32,13 +33,13 @@ if (hasToStringTag && gOPD && getPrototypeOf) {
 				var superProto = getPrototypeOf(proto);
 				descriptor = gOPD(superProto, Symbol.toStringTag);
 			}
-			cache['$' + typedArray] = descriptor.get;
+			cache['$' + typedArray] = callBind(descriptor.get);
 		}
 	});
 } else {
 	forEach(typedArrays, function (typedArray) {
 		var arr = new g[typedArray]();
-		cache['$' + typedArray] = arr.slice;
+		cache['$' + typedArray] = callBind(arr.slice);
 	});
 }
 
@@ -47,7 +48,7 @@ var tryTypedArrays = function tryAllTypedArrays(value) {
 	forEach(cache, function (getter, typedArray) {
 		if (!anyTrue) {
 			try {
-				anyTrue = ('$' + getter.call(value)) === typedArray;
+				anyTrue = ('$' + getter(value)) === typedArray;
 			} catch (e) { /**/ }
 		}
 	});
@@ -59,7 +60,7 @@ var trySlices = function tryAllSlices(value) {
 	forEach(cache, function (getter) {
 		if (!anyTrue) {
 			try {
-				getter.call(value);
+				getter(value);
 				anyTrue = true;
 			} catch (e) { /**/ }
 		}
