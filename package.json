@@ -65,6 +65,7 @@
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^21.1.0",
+		"@ljharb/tsconfig": "^0.2.0",
 		"@types/for-each": "^0.3.3",
 		"@types/is-callable": "^1.1.2",
 		"@types/make-arrow-function": "^1.2.2",
