@@ -27,7 +27,7 @@
 		"prepublish": "not-in-publish || npm run prepublishOnly",
 		"prelint": "evalmd README.md",
 		"lint": "eslint --ext=js,mjs .",
-		"postlint": "tsc -p .",
+		"postlint": "tsc -p . && attw -P",
 		"pretest": "npm run --silent lint",
 		"test": "npm run tests-only && npm run test:harmony",
 		"tests-only": "nyc tape test",
@@ -64,6 +64,7 @@
 		"which-typed-array": "^1.1.15"
 	},
 	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.15.1",
 		"@ljharb/eslint-config": "^21.1.0",
 		"@ljharb/tsconfig": "^0.2.0",
 		"@types/for-each": "^0.3.3",
