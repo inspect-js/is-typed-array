@@ -69,7 +69,7 @@
 		"@types/is-callable": "^1.1.2",
 		"@types/make-arrow-function": "^1.2.2",
 		"@types/make-generator-function": "^2.0.3",
-		"@types/node": "^20.11.14",
+		"@types/node": "^20.11.25",
 		"@types/object-inspect": "^1.8.4",
 		"@types/tape": "^5.6.4",
 		"aud": "^2.0.4",
@@ -77,7 +77,7 @@
 		"eslint": "=8.8.0",
 		"evalmd": "^0.0.19",
 		"for-each": "^0.3.3",
-		"has-tostringtag": "^1.0.1",
+		"has-tostringtag": "^1.0.2",
 		"in-publish": "^2.0.1",
 		"is-callable": "^1.2.7",
 		"make-arrow-function": "^1.2.0",
@@ -86,7 +86,7 @@
 		"nyc": "^10.3.2",
 		"object-inspect": "^1.13.1",
 		"safe-publish-latest": "^2.0.0",
-		"tape": "^5.7.4",
+		"tape": "^5.7.5",
 		"typescript": "next"
 	},
 	"testling": {
