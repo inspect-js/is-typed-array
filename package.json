@@ -61,7 +61,7 @@
 		"@@toStringTag"
 	],
 	"dependencies": {
-		"which-typed-array": "^1.1.14"
+		"which-typed-array": "^1.1.15"
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^21.1.0",
