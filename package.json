@@ -32,7 +32,7 @@
 		"test": "npm run tests-only && npm run test:harmony",
 		"tests-only": "nyc tape test",
 		"test:harmony": "nyc node --harmony --es-staging test",
-		"posttest": "npx aud --production",
+		"posttest": "npx npm@'>= 10.2' audit --production",
 		"version": "auto-changelog && git add CHANGELOG.md",
 		"postversion": "auto-changelog && git add CHANGELOG.md && git commit --no-edit --amend && git tag -f \"v$(node -e \"console.log(require('./package.json').version)\")\""
 	},
@@ -74,7 +74,6 @@
 		"@types/node": "^20.11.25",
 		"@types/object-inspect": "^1.8.4",
 		"@types/tape": "^5.6.4",
-		"aud": "^2.0.4",
 		"auto-changelog": "^2.4.0",
 		"eslint": "=8.8.0",
 		"evalmd": "^0.0.19",
