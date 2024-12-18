@@ -1,9 +1,9 @@
-import type { TypedArray as TA } from "which-typed-array";
+import type { TypedArray } from 'which-typed-array';
 
 declare namespace isTypedArray {
-    type TypedArray = TA;
+    export { TypedArray };
 }
 
-declare function isTypedArray(value: unknown): value is TA;
+declare function isTypedArray(value: unknown): value is isTypedArray.TypedArray;
 
 export = isTypedArray;
